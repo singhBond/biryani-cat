@@ -8,6 +8,7 @@ import {
   Flame,
   Microwave,
   Loader2,
+  HandPlatter,
 } from "lucide-react";
 
 export default function BiryaniLoader() {
@@ -28,15 +29,16 @@ export default function BiryaniLoader() {
 
       {/* Dum / Oven Cooking Animation */}
       <div className="mt-2 flex items-center gap-3">
-        <div className="w-32 h-20 bg-linear-to-r from-orange-500 to-red-700 rounded-lg shadow-2xl relative overflow-hidden">
+        {/* <div className="w-32 h-20 bg-linear-to-r from-orange-500 to-red-700 rounded-lg shadow-2xl relative overflow-hidden"> */}
           <div className="absolute inset-0 bg-linear-to-t from-orange-600/60 to-transparent animate-pulse" />
 
           {/* Microwave → Dum Pot Effect */}
-          <Microwave className="absolute inset-0 m-auto w-28 h-20 text-yellow-200 opacity-80" />
+          {/* <Microwave className="absolute inset-0 m-auto w-28 h-20 text-yellow-200 opacity-80" /> */}
+          <HandPlatter className="absolute inset-0 m-auto w-42 h-28 py-2 text-red-500 opacity-80" />
 
           {/* Heat layer */}
           <div className="absolute inset-x-0 bottom-0 h-8 bg-orange-500/40 animate-pulse [animation-delay:300ms]" />
-        </div>
+        {/* </div> */}
       </div>
 
       {/* Text */}

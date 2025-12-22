@@ -160,7 +160,7 @@ export default function AddCategoryDialog() {
         <DialogHeader>
           <DialogTitle>Add New Menu Category</DialogTitle>
           <DialogDescription>
-            Create a new category like "Pizzas", "Burgers", "Biryani", etc.
+            Create a new category like "Biryani", "South Indian", "Chinese", etc.
           </DialogDescription>
         </DialogHeader>
 
@@ -172,7 +172,7 @@ export default function AddCategoryDialog() {
               id="cat-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g., South Indian, Beverages"
+              placeholder="e.g., Biryani, Chinese, South Indian,  etc"
               disabled={isLoading}
               autoFocus
             />

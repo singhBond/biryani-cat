@@ -73,7 +73,7 @@ export const CategorySidebar: React.FC<Props> = ({
   );
 
   return (
-    <aside className="w-24 sm:w-40 md:w-32 sticky top-28 h-[calc(100vh-8rem)] overflow-y-auto bg-linear-to-r from-orange-300 via-yellow-50 to-orange-300 border-r rounded-xl shadow-sm p-2 scrollbar-thin">
+    <aside className="w-24 sm:w-40 md:w-32 sticky top-28 h-[calc(100vh-8rem)] overflow-y-auto bg-linear-to-r from-red-950 via-red-800 to-red-700 border-r rounded-xl shadow-sm p-2 scrollbar-thin">
       {loading || categories.length === 0 ? (
         // Show 6 skeleton items while loading or empty
         Array(6).fill(0).map((_, i) => <SkeletonItem key={i} />)

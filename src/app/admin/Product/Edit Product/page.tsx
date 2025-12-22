@@ -241,7 +241,7 @@ export default function EditProductDialog({
           {/* Prices */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
-              <Label>Cake Only *</Label>
+              <Label>Full Price *</Label>
               <Input
                 type="number"
                 value={price}
@@ -249,11 +249,11 @@ export default function EditProductDialog({
                   setPrice(e.target.value ? Number(e.target.value) : "")
                 }
                 disabled={isLoading}
-                placeholder="Enter cake price "
+                placeholder="Enter full price "
               />
             </div>
             <div className="space-y-1">
-              <Label>Birthday Pack Price</Label>
+              <Label>Half Price</Label>
               <Input
                 type="number"
                 value={halfPrice}
@@ -261,18 +261,18 @@ export default function EditProductDialog({
                   setHalfPrice(e.target.value ? Number(e.target.value) : "")
                 }
                 disabled={isLoading}
-                placeholder="Enter birthday pack price"
+                placeholder="Enter half price"
               />
             </div>
           </div>
 
           {/* Quantity */}
           <div className="space-y-1">
-            <Label>Quantity</Label>
+            <Label>Serve</Label>
             <Input
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
-              placeholder="eg: 2 Pound, 1 Pc, etc"
+              placeholder="eg: 1-2 Person, etc"
               disabled={isLoading}
             />
           </div>

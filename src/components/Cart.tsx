@@ -135,7 +135,7 @@ export const Cart = () => {
     if (orderMode === "online") message += `*Delivery Charge:* ₹${deliveryCharge}%0A`;
     message += `*Total:* ₹${total}%0A%0AThank you!`;
 
-    const whatsappUrl = `https://wa.me/918210936795?text=${message}`;
+    const whatsappUrl = `https://wa.me/919113320865?text=${message}`;
     window.open(whatsappUrl, "_blank");
     clearCart();
   };
@@ -159,7 +159,7 @@ export const Cart = () => {
 
       {/* Cart Dialog */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-lg max-h-[90vh]  overflow-y-auto rounded-2xl p-0 ">
+        <DialogContent className="max-w-lg max-h-[90vh] w-full md:w-fit  overflow-y-auto rounded-2xl p-0 ">
           <DialogHeader className="p-4 pb-3 border-b sticky top-0 bg-white z-10">
             <DialogTitle className="text-2xl font-bold flex items-center justify-between">
               <span className="flex items-center gap-3">

@@ -258,7 +258,7 @@ export const ProductItem = ({ product, onClick }: ProductItemProps) => {
                           className="flex-1"
                           onClick={() => setTempPortion("full")}
                         >
-                          Cake Only
+                          Full Price
                         </Button>
                         <Button
                           variant={tempPortion === "half" ? "orange" : "outline"}
@@ -266,7 +266,7 @@ export const ProductItem = ({ product, onClick }: ProductItemProps) => {
                           className="flex-1"
                           onClick={() => setTempPortion("half")}
                         >
-                          Birthday Pack
+                          Half Price
                         </Button>
                       </div>
                     </div>
@@ -303,7 +303,7 @@ export const ProductItem = ({ product, onClick }: ProductItemProps) => {
                   {/* Show single quantity if no options */}
                   {!hasMultipleQuantityOptions && product.quantity && product.quantity !== "1" && (
                     <p className="text-md text-gray-600">
-                      <strong>Quantity :</strong> {product.quantity}
+                      <strong>Serve :</strong> {product.quantity}
                     </p>
                   )}
 

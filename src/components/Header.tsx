@@ -36,9 +36,9 @@ export const Header = () => (
          <img src="delivers.png" alt="scooter" className="h-10" />
       </div>
       <p className="text-yellow-500 font-bold text-lg md:text-xl">
-        Call: +91-9113320865
+        Call: +91 9113320865
       </p>
-      <p className="text-gray-400 text-[10px] md:text-xs uppercase tracking-tighter">
+      <p className="text-gray-200 text-[10px] md:text-xs uppercase tracking-tighter">
         Accepting Online Order : 10:00 AM - 9:00 PM
       </p>
     </div>
