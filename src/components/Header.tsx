@@ -1,16 +1,16 @@
 import React from "react";
 
 export const Header = () => (
-  <div className="flex flex-col items-center text-center py-10 px-4 bg-linear-to-r from-red-900 via-black to-red-900 border-b-4 border-yellow-500">
+  <div className="flex flex-col items-center text-center py-10 px-4 bg-linear-to-r from-red-900 via-black to-red-900">
     
 
     {/* Main Title Container - Using the Red Box Style from the image */}
     <div className="bg-red-600 border-2 border-yellow-500 px-8 py-2 shadow-lg relative">
       {/* Top Small Logo/Icon */}
     <div className="absolute bottom-8 justify-self-center">
-       <img src="/logo.png" className="h-20 md:h-28 my-2" alt="Logo" />
+       <img src="/logo.png" className="h-20 md:h-28 my-3" alt="Logo" />
     </div>
-      <h1 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter" 
+      <h1 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter" 
           style={{ fontFamily: "'Rye', serif "}}>
         𝔅𝔦𝔯𝔶𝔞𝔫𝔦 ℌ𝔬𝔲𝔰𝔢 
       </h1>

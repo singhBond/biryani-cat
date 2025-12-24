@@ -16,7 +16,7 @@ export default function AdminLogin() {
   }, []);
 
   const handleLogin = () => {
-    if (password.trim() === "Bakery") {
+    if (password.trim() === "Biryani@1") {
       sessionStorage.setItem("adminAuth", "true");
 
       // ✅ Redirect ONLY after correct password
@@ -31,7 +31,7 @@ export default function AdminLogin() {
       <Card className="w-full max-w-md p-10 shadow-2xl bg-white/95 backdrop-blur-lg border border-white/20">
         <div className="text-center mb-10">
           <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-yellow-600 to-red-600">
-            Bakery's
+            Biryani House
           </h1>
           <p className="text-gray-600 text-lg mt-3">Admin Login</p>
         </div>
@@ -54,7 +54,7 @@ export default function AdminLogin() {
         </div>
 
         <p className="text-center text-xs text-gray-500 mt-8">
-          Hint : <code className="bg-gray-200 px-2 py-1 rounded">Bakery</code>
+          Hint : <code className="bg-gray-200 px-2 py-1 rounded">Biryani@1</code>
         </p>
       </Card>
     </div>

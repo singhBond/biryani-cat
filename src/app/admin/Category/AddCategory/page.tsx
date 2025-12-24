@@ -18,7 +18,7 @@ import { Button } from "@/src/components/ui/button";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/src/lib/firebase";
 
-// Image compression helper (same as before)
+// Image compression helper
 const compressImage = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -70,7 +70,6 @@ const compressImage = (file: File): Promise<string> => {
 
 // Format name helper
 const formatName = (raw: string) =>
-
   raw
     .trim()
     .replace(/\s+/g, " ")
@@ -85,11 +84,9 @@ export default function AddCategoryDialog() {
   const [preview, setPreview] = useState("");
   const [sizeInfo, setSizeInfo] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
+  const processImage = (file: File) => {
     if (!file.type.startsWith("image/")) {
       alert("Please select an image file");
       return;
@@ -103,6 +100,32 @@ export default function AddCategoryDialog() {
         setSizeInfo(`${kb} KB`);
       })
       .catch(() => alert("Failed to process image. Try another one."));
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) processImage(file);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    const file = e.dataTransfer.files[0];
+    if (file) processImage(file);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
   };
 
   const handleSubmit = async () => {
@@ -172,23 +195,34 @@ export default function AddCategoryDialog() {
               id="cat-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g., Biryani, Chinese, South Indian,  etc"
+              placeholder="e.g., Biryani, Chinese, South Indian, etc"
               disabled={isLoading}
               autoFocus
             />
           </div>
 
-          {/* Image Upload */}
+          {/* Image Upload with Drag & Drop */}
           <div className="space-y-3">
             <Label htmlFor="cat-image">
               Category Image <span className="text-red-500">*</span>
             </Label>
 
             {!preview ? (
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-yellow-500 transition-colors"
-                onClick={() => document.getElementById("cat-image")?.click()}>
+              <div
+                className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
+                  ${isDragging 
+                    ? "border-yellow-500 bg-yellow-50" 
+                    : "border-gray-300 hover:border-yellow-500"
+                  }`}
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onClick={() => document.getElementById("cat-image")?.click()}
+              >
                 <Upload className="mx-auto h-10 w-10 text-gray-400" />
-                <p className="mt-2 text-sm text-gray-600">Click to upload image</p>
+                <p className="mt-2 text-sm text-gray-600">
+                  {isDragging ? "Drop image here" : "Click or drag image to upload"}
+                </p>
                 <p className="text-xs text-gray-500">Auto-compressed to less than 500 KB</p>
               </div>
             ) : (
@@ -216,7 +250,7 @@ export default function AddCategoryDialog() {
               id="cat-image"
               type="file"
               accept="image/*"
-              onChange={handleImage}
+              onChange={handleImageChange}
               className="hidden"
               disabled={isLoading}
             />

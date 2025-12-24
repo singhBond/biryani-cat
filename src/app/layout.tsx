@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bakery's Point",
-  description: "Bakes n Cakes",
+  title: "Biryani House",
+  description: "Special Biryani, Chinese, Indian",
 };
 
 export default function RootLayout({

@@ -250,7 +250,7 @@ export const ProductItem = ({ product, onClick }: ProductItemProps) => {
 
                   {product.halfPrice && (
                     <div>
-                      <p className="text-md font-medium text-gray-700 mb-2">Cake Type:</p>
+                      <p className="text-md font-medium text-gray-700 mb-2">Plate type:</p>
                       <div className="flex gap-3">
                         <Button
                           variant={tempPortion === "full" ? "orange" : "outline"}

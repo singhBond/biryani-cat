@@ -134,7 +134,8 @@ const DragDropUpload: React.FC<{
         >
           <Upload className="h-8 w-8 text-gray-400" />
           <p className="mt-1 text-xs text-gray-600">
-            {previews.length ? "Add more" : "Upload"}
+            {previews.length ? "Add more images"
+            : "Click or drag to add images" }
           </p>
         </div>
       </div>

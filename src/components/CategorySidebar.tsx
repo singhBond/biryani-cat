@@ -10,6 +10,7 @@ interface Category {
   name: string;
   imageUrl?: string;
   createdAt?: Timestamp | null;
+  order?: number; // Optional – added by admin drag-reorder
 }
 
 interface Props {
@@ -37,14 +38,22 @@ export const CategorySidebar: React.FC<Props> = ({
             name: data.name || "Unnamed Category",
             imageUrl: data.imageUrl || "",
             createdAt: data.createdAt ?? null,
+            order: typeof data.order === "number" ? data.order : Infinity, // Safe fallback
           };
         });
 
-        // Sort newest first
+        // Sort by manual order first (lower = higher position), then by creation time
         fetchedCategories.sort((a, b) => {
+          const aOrder = a.order ?? Infinity;
+          const bOrder = b.order ?? Infinity;
+
+          if (aOrder !== bOrder) {
+            return aOrder - bOrder;
+          }
+
           const aTime = a.createdAt ? a.createdAt.toMillis() : 0;
           const bTime = b.createdAt ? b.createdAt.toMillis() : 0;
-          return bTime - aTime;
+          return bTime - aTime; // Newest on top if orders are equal
         });
 
         setCategories(fetchedCategories);
@@ -75,7 +84,6 @@ export const CategorySidebar: React.FC<Props> = ({
   return (
     <aside className="w-24 sm:w-40 md:w-32 sticky top-28 h-[calc(100vh-8rem)] overflow-y-auto bg-linear-to-r from-red-950 via-red-800 to-red-700 border-r rounded-xl shadow-sm p-2 scrollbar-thin">
       {loading || categories.length === 0 ? (
-        // Show 6 skeleton items while loading or empty
         Array(6).fill(0).map((_, i) => <SkeletonItem key={i} />)
       ) : (
         categories.map((cat) => (
@@ -84,8 +92,8 @@ export const CategorySidebar: React.FC<Props> = ({
             onClick={() => onCategoryChange(cat.id)}
             className={`flex flex-col items-center cursor-pointer rounded-xl px-8 py-2 mb-2 transition-all border ${
               activeCategory === cat.id
-                ? "bg-orange-100 border-orange-400 shadow-lg scale-110"
-                : "hover:bg-gray-50 border-transparent"
+                ? "bg-red-600 border-orange-400 shadow-lg scale-110"
+                : "hover:bg-red-800 border-transparent"
             }`}
           >
             <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-200 shadow-sm">
@@ -98,7 +106,7 @@ export const CategorySidebar: React.FC<Props> = ({
                 }}
               />
             </div>
-            <span className="text-xs sm:text-sm font-semibold text-center mt-1 uppercase tracking-wider text-gray-800 ">
+            <span className="text-xs sm:text-sm font-semibold text-center mt-1 uppercase tracking-wider text-gray-200">
               {cat.name}
             </span>
           </div>

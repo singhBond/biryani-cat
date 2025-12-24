@@ -93,11 +93,11 @@ export default function ProductRow({ categoryId, product }: ProductRowProps) {
                 alt={product.name}
                 className="w-14 h-14 object-cover rounded-lg border-2 border-gray-200 shadow-sm transition-transform group-hover:scale-110"
               />
-              {totalImages > 1 && (
+              {/* {totalImages > 1 && (
                 <div className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-md">
                   {totalImages}
                 </div>
-              )}
+              )} */}
             </div>
           ) : (
             <div className="w-14 h-14 bg-gray-100 border-2 border-dashed rounded-lg flex items-center justify-center">

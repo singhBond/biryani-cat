@@ -11,7 +11,7 @@ export const VegFilter = ({ filter, setFilter }: Props) => (
         <Button
           variant={filter === "all" ? "default" : "outline"}
           className={`flex items-center gap-2 ${
-            filter === "all" ? "bg-yellow-600 hover:bg-yellow-700" : ""
+            filter === "all" ? "bg-slate-500 hover:bg-slate-700" : ""
           }`}
           onClick={() => setFilter("all")}
         >
